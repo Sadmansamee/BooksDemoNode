@@ -13,6 +13,18 @@ const User = db.define('users',{
     password:Sequelize.TEXT
 });
 
+const Books = db.define('books',{
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true 
+      },
+    title:Sequelize.TEXT,
+    sub_title:Sequelize.TEXT,
+    description:Sequelize.TEXT,
+    preview: Sequelize.TEXT
+});
+
 const Direction = db.define('directions',{
     user_id:Sequelize.NUMERIC,
     destination:Sequelize.TEXT,
@@ -25,5 +37,5 @@ db.sync()
     }).catch(e=>console.log(e.message));
 
 module.exports = {
-    db,User,Direction
+    db,User,Direction,Books
 }

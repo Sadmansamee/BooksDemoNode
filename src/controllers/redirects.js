@@ -4,6 +4,7 @@ const {check}        = require('express-validator/check');
 const rejectInvalid  = require('../middlewares/reject_invalid');
 const _p             = require('../utils/promise_errors');
 const entryValidator = [check('url').isURL()]
+
 router.post('/api/v1/redirects',entryValidator,rejectInvalid,async (req,res,next)=>{
     let user_id = req.user.id;
     let destination = req.body.url;
@@ -23,7 +24,5 @@ router.post('/api/v1/redirects',entryValidator,rejectInvalid,async (req,res,next
         })
     }
 })
-
-
 
 module.exports = router;
