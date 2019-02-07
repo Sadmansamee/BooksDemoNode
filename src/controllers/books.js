@@ -7,8 +7,12 @@ const entryValidator = [check('url').isURL()]
 const {toPlain} = require('../utils/array_helper')
 
 router.get('/books',entryValidator,rejectInvalid,async (req,res,next)=>{
-         res.json({"data"
-         })
+    
+     res.json({
+            error:false,
+                data: data
+            });
+
     let [error,books] = await _p(Books.findAll({
         where:{
             // email:{
