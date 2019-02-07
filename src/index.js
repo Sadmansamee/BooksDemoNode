@@ -2,6 +2,7 @@ const express = require('express');
 const bp      = require('body-parser');
 const signup  = require('./controllers/signup');
 const login   = require('./controllers/login');
+const books   = require('./controllers/books');
 const auth    = require('./middlewares/auth');
 const app     = express();
 const errh    = require('./middlewares/error_handler');
@@ -13,6 +14,7 @@ app.use('/api',auth);
 //Routes
 app.use(signup);
 app.use(login);
+app.use(books);
 app.use(red);
 app.use(send);
 app.use(errh);
