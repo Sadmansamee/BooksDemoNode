@@ -6,8 +6,9 @@ const _p             = require('../utils/promise_errors');
 const entryValidator = [check('url').isURL()]
 const {toPlain} = require('../utils/array_helper')
 
-router.get('/api/v1/books',entryValidator,rejectInvalid,async (req,res,next)=>{
- 
+router.get('/books',entryValidator,rejectInvalid,async (req,res,next)=>{
+         res.json({"data"
+         })
     let [error,books] = await _p(Books.findAll({
         where:{
             // email:{
