@@ -6,7 +6,7 @@ const _p             = require('../utils/promise_errors');
 const entryValidator = [check('url').isURL()]
 const {toPlain} = require('../utils/array_helper')
 
-router.get('/api/v1/books',entryValidator,rejectInvalid,async (req,res,next)=>{
+router.get('/books',rejectInvalid,async (req,res,next)=>{
 
     let [error,books] = await _p(Books.findAll({
         where:{
@@ -26,7 +26,7 @@ router.get('/api/v1/books',entryValidator,rejectInvalid,async (req,res,next)=>{
     }
 })
 
-router.post('/books-create',rejectInvalid,async (req,res,next)=>{
+router.post('/book-create',rejectInvalid,async (req,res,next)=>{
 
     let {title,sub_title,description,preview} = req.body;
 
@@ -39,6 +39,26 @@ router.post('/books-create',rejectInvalid,async (req,res,next)=>{
     else{
         res.json({
             message:"Book created Successfully"
+        })
+    }
+})
+
+router.delete('/book-delete',rejectInvalid,async (req,res,next)=>{
+
+    let {id} = req.body;
+
+    let [cretErr,deleted] = await _p(Books.delete({
+        where:{
+            id:{
+                [Op.eq]:id
+            }
+        }    }));
+    if(cretErr && !deleted){
+        next(createerr);
+    }
+    else{
+        res.json({
+            message:"Book deleted Successfully"
         })
     }
 })
