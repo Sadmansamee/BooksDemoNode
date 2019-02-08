@@ -28,10 +28,10 @@ router.get('/books',rejectInvalid,async (req,res,next)=>{
 
 router.post('/book-create',rejectInvalid,async (req,res,next)=>{
 
-    let {title,subTitle,description,preview} = req.body;
+    let {title,author,subTitle,description,preview} = req.body;
 
     let [cretErr,created] = await _p(Books.create({
-        title,subTitle,description,preview
+        title,author,subTitle,description,preview
     }));
     if(cretErr && !created){
         next(createerr);
