@@ -30,10 +30,7 @@ const Direction = db.define('directions',{
     destination:Sequelize.TEXT,
     hash:Sequelize.TEXT
 });
-db.Books.destroy({
-  where: {},
-  truncate: true
-})
+
 db.sync()
     .then(e=>{
         console.log(`Database Synced`)
