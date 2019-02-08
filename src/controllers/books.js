@@ -21,7 +21,7 @@ router.get('/books',rejectInvalid,async (req,res,next)=>{
     else{
         res.json({
             error:false,
-                data: toPlain(books)
+            data: toPlain(books)
             });
     }
 })
@@ -38,8 +38,7 @@ router.post('/books-create',rejectInvalid,async (req,res,next)=>{
     }
     else{
         res.json({
-            message:"Book created Successfully",
-            hash
+            message:"Book created Successfully"
         })
     }
 })
