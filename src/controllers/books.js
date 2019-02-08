@@ -7,11 +7,6 @@ const entryValidator = [check('url').isURL()]
 const {toPlain} = require('../utils/array_helper')
 
 router.get('/books',entryValidator,rejectInvalid,async (req,res,next)=>{
-    
-     res.json({
-            error:false,
-                data: data
-            });
 
     let [error,books] = await _p(Books.findAll({
         where:{
@@ -28,6 +23,24 @@ router.get('/books',entryValidator,rejectInvalid,async (req,res,next)=>{
             error:false,
                 data: toPlain(books)
             });
+    }
+})
+
+router.get('/books-create',entryValidator,rejectInvalid,async (req,res,next)=>{
+
+    let {title,sub_title,description,preview} = req.body;
+
+    let [cretErr,created] = await _p(Books.create({
+        title,sub_title,description,preview
+    }));
+    if(cretErr && !created){
+        next(createerr);
+    }
+    else{
+        res.json({
+            message:"Book created Successfully",
+            hash
+        })
     }
 })
 
