@@ -26,7 +26,7 @@ router.get('/books',rejectInvalid,async (req,res,next)=>{
     }
 })
 
-router.post('/books-create',entryValidator,rejectInvalid,async (req,res,next)=>{
+router.post('/books-create',rejectInvalid,async (req,res,next)=>{
 
     let {title,sub_title,description,preview} = req.body;
 
