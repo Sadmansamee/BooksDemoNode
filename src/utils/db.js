@@ -25,17 +25,6 @@ const Books = db.define('books',{
     preview: Sequelize.TEXT
 });
 
-const Books = db.define('audio',{
-    id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true 
-      },
-    title:Sequelize.TEXT,
-    subTitle:Sequelize.TEXT,
-    description:Sequelize.TEXT,
-    preview: Sequelize.TEXT
-});
 
 db.sync()
     .then(e=>{
