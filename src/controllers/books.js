@@ -6,7 +6,7 @@ const _p             = require('../utils/promise_errors');
 const entryValidator = [check('url').isURL()]
 const {toPlain} = require('../utils/array_helper')
 
-router.get('/books',entryValidator,rejectInvalid,async (req,res,next)=>{
+router.get('/books',rejectInvalid,async (req,res,next)=>{
 
     let [error,books] = await _p(Books.findAll({
         where:{
@@ -26,7 +26,7 @@ router.get('/books',entryValidator,rejectInvalid,async (req,res,next)=>{
     }
 })
 
-router.get('/books-create',entryValidator,rejectInvalid,async (req,res,next)=>{
+router.post('/books-create',entryValidator,rejectInvalid,async (req,res,next)=>{
 
     let {title,sub_title,description,preview} = req.body;
 
