@@ -20,7 +20,7 @@ const Books = db.define('books',{
         autoIncrement: true 
       },
     title:Sequelize.TEXT,
-    //author: Sequelize.TEXT,
+    author: Sequelize.TEXT,
     subTitle:Sequelize.TEXT,
     description:Sequelize.TEXT,
     preview: Sequelize.TEXT
