@@ -25,6 +25,11 @@ const Books = db.define('books',{
     preview: Sequelize.TEXT
 });
 
+const Direction = db.define('directions',{
+    user_id:Sequelize.NUMERIC,
+    destination:Sequelize.TEXT,
+    hash:Sequelize.TEXT
+});
 
 db.sync()
     .then(e=>{
