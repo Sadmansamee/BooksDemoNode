@@ -34,7 +34,7 @@ router.post('/book-create',rejectInvalid,async (req,res,next)=>{
         title,author,subTitle,description,preview
     }));
     if(cretErr && !created){
-        next(createerr);
+        next(cretErr);
     }
     else{
         res.json({
@@ -54,7 +54,7 @@ router.delete('/book-delete',rejectInvalid,async (req,res,next)=>{
             }
         }    }));
     if(cretErr && !deleted){
-        next(createerr);
+        next(cretErr);
     }
     else{
         res.json({
